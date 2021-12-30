@@ -1,0 +1,279 @@
+/*カスタマイザーstyle*/
+.customize-control{ margin-bottom: 20px;}
+.customize-control-title,
+.customize-control-radio .customize-control-title{background:#0073AA; color:#fff; padding:10px; text-align:center; margin-top: 10px; margin-bottom: 10px;}
+.customize-control-subtitle{border:1px solid #0073AA; color:#0073AA; padding:5px; text-align:center; margin-top: 10px;margin-bottom: 10px; font-weight:bold;}
+.customize-section-description{ background:#FFF; padding:10px;}
+.customize-section-description .asterisk{ display:inline-block; color:#C00; font-size:10px; }
+.customize-control-description .label__red{ display:inline-block; background:#C00; color:#FFF; font-size:10px; padding:2.5px 5px; border-radius:5px;}
+.customize-control-description .label_blue{ display:block; border:1px dotted #8fa3bf; color:#8fa3bf; padding:2.5px 5px; font-size:11px; text-align:center }
+
+.customize-control select,
+.customize-control input,
+.customize-control textarea {font-size:12px;}
+.customize-control select,
+.customize-control input[type=number]{width: auto !important; max-width:100%;}
+.customize-control + .customize-control-checkbox{margin-top: -12px;}
+.customize-control .required{ display:inline-block; background:#C00; color:#FFF; font-size:10px; padding: 0px 5px; line-height: 16px; margin:0 5px;}
+
+
+
+/*アイコンフォントwindow*/
+#layer {
+    display: none;
+    position: fixed;
+    top: 0;
+	bottom:0;
+	left: 0;
+	right:0;
+    background: rgba(0,0,0,0.7);
+	z-index:9999;
+}
+#popup {
+    display: none;
+    position: fixed;
+    top: 30px;
+	bottom:30px;
+	left: 30px;
+	right:30px;
+    background-color: white;
+	z-index:9999;
+}
+
+
+
+/*基本のTable*/
+.basicTable {
+    margin: 0;
+    width: 100%;
+	border-spacing: 0;
+}
+
+.basicTable th,
+.basicTable td{
+	background: #fff;
+    border-top: #eee solid 1px;
+    padding: 20px 0;
+}
+.basicTable th{ text-align:left; font-weight:normal;width:220px}
+.basicTable tr:first-child th,
+.basicTable tr:first-child td{border-top: none;}
+.basicTable textarea{ width:100%}
+
+
+
+/*メニュービルダーTable*/
+.menuBuilderTable {
+    margin: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+	border-spacing: 0;
+	counter-reset: rowCount;
+}
+.menuBuilderTable thead th {
+    padding:10px 0;
+    background-color: #f1f1f1;
+}
+.menuBuilderTable__tr{counter-increment: rowCount;}
+.menuBuilderTable__tr td:first-child::before {
+	content: counter(rowCount);
+    line-height: 30px;
+	padding-left:5px;
+}
+.menuBuilderTable__tr td .input__title,
+.menuBuilderTable__tr td .input__price{ width:100%}
+.menuBuilderTable__tr td .textarea__text{ min-width:280px; height:63px;}
+.menuBuilderTable__tr td .input__img{ width : calc(100% - 120px) ; margin-bottom:5px;}
+.menuBuilderTable__tr td .previewBox{
+	float:right;
+	margin-left:10px;
+	background:#f1f1f1;
+	border:1px solid #ddd;
+	width:100px;
+	min-height:27px;
+}
+.menuBuilderTable__tr td .previewBox img{vertical-align: bottom;}
+.menuBuilderTable__tr td:last-child {text-align:center;} /*コントローラ―エリア*/
+.menuBuilderTable tbody td{padding:10px 5px;} /*基本入力エリア*/
+.menuBuilderTable tbody td select{width:100%;} /*セレクトボックスを100%*/
+.menuBuilderTable tbody tr:last-child td{padding-left:30px;} /*行を追加ボタンエリア*/
+
+
+
+
+
+/*AFランキングビルダーTable*/
+.afRankBuilderTable {
+    margin: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+	border-spacing: 0;
+	counter-reset: rowCount;
+}
+.afRankBuilderTable thead th {
+    padding:10px 0;
+    background-color: #f1f1f1;
+}
+.afRankBuilderTable__tr{counter-increment: rowCount;}
+.afRankBuilderTable__tr td:first-child::before {
+	content: counter(rowCount);
+    line-height: 30px;
+	padding-left:5px;
+}
+.afRankBuilderTable__tr td:last-child {text-align:center;} /*コントローラ―エリア*/
+.afRankBuilderTable tbody td{padding:10px 5px;} /*基本入力エリア*/
+.afRankBuilderTable tbody td .select__title{width:100%;} /*セレクトボックスを100%*/
+.afRankBuilderTable tbody tr:last-child td{padding-left:30px;} /*行を追加ボタンエリア*/
+
+
+/*AFランキングフォーマットビルダーTable*/
+.afRankFormatBuilderTable {
+    margin: 0 0 20px 0;
+    width: 100%;
+    border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+    background-color: #f9f9f9;
+	border-spacing: 0;
+}
+.afRankFormatBuilderTable tbody td{padding:20px 10px;border-bottom: #ddd solid 1px;} /*基本入力エリア*/
+.afRankFormatBuilderTable tbody td label{ margin-right:10px;vertical-align: baseline;}
+
+
+
+/*AFタグオリジナルフォーマットビルダーTable*/
+.afTagFormatBuilderTable {
+    margin: 0;
+    width: 100%;
+	border-spacing: 0;
+}
+
+.afTagFormatBuilderTable th,
+.afTagFormatBuilderTable td{
+	background: #fff;
+    border-top: #eee solid 1px;
+    padding: 20px 0;
+}
+.afTagFormatBuilderTable th{ text-align:left; font-weight:normal;width:220px}
+
+.afTagFormatBuilderTable td label{ margin-right:10px;vertical-align: baseline;}
+.afTagFormatBuilderTable__inFirst{ margin-right:20px;}
+.afTagFormatBuilderTable textarea{ width:100%}
+.afTagFormatBuilderTable .middle{width:180px}
+.afTagFormatBuilderTable .wide{ width:240px}
+.afTagFormatBuilderTable .wide100{ width:100%}
+.afTagFormatBuilderTable tr:first-child th,
+.afTagFormatBuilderTable tr:first-child td{border-top: none;}
+.afTagFormatBuilderTable td small{color: #7F7F7F; font-size:11px;}
+
+
+/*カラム設定&非表示設定の行間*/
+.fitInner{line-height: 22px;}
+
+
+
+
+
+
+/*閲覧数などを表示するBox(投稿・AFタグの投稿詳細で使用)*/
+.afTag_day{margin-bottom:10px;}
+.afTag_day:last-child{margin-bottom:0;}
+.afTag_day input{ display:block;}
+
+
+
+
+
+/*カラーピッカー用style*/
+.wp-picker-container .wp-color-result.button {
+    height: 24px;
+    margin: 0 6px 6px 0;
+    padding: 0 0 0 30px;
+    font-size: 11px;
+}
+.wp-picker-container .wp-color-result-text {
+    background: #f7f7f7;
+    border-radius: 0 2px 2px 0;
+    border-left: 1px solid #ccc;
+    color: #555;
+    display: block;
+    line-height: 22px;
+    padding: 0 6px;
+    text-align: center;
+}
+.fitColorPicker.wp-color-picker {
+    width: 65px;
+    font-size: 12px;
+    font-family: monospace;
+    line-height: 16px;
+    margin: 0;
+	padding: 2px 5px;
+    vertical-align: top;
+}
+.wp-customizer .wp-picker-input-wrap .button, .wp-picker-input-wrap .button {
+    margin-left: 6px;
+}
+
+
+
+
+
+
+
+
+/*一覧画面のテーブル系*/
+#post-search-keyword{ width:200px}
+.edit-php.post-type-post .widefat tfoot td,
+.edit-php.post-type-post .widefat th,
+.edit-php.post-type-post .widefat thead td{font-size: 13px}
+.edit-php.post-type-post .widefat td,
+.edit-php.post-type-post .widefat th{padding: 6px 6px}
+.edit-php.post-type-post th.sortable a,
+.edit-php.post-type-post th.sorted a{padding:0}
+.edit-php.post-type-post .wp-list-table b{ color:#ca4a1f}
+.edit-php.post-type-post .subsubsub{ width:100%}
+.edit-php.post-type-post .subsubsub li.seo_keyword{ float:right;}
+
+@media screen and (max-width: 782px){.edit-php.post-type-post .subsubsub li.seo_keyword{ display:none}}
+
+.edit-php.post-type-post .column-author,
+.edit-php.post-type-post .column-date,
+.edit-php.post-type-post .column-format,
+.edit-php.post-type-post .column-links,
+.edit-php.post-type-post .column-parent,
+.edit-php.post-type-post .column-posts,
+.edit-php.post-type-post .column-categories,
+.edit-php.post-type-post .column-rel,
+.edit-php.post-type-post .column-response,
+.edit-php.post-type-post .column-role,
+.edit-php.post-type-post .column-tags{ width:auto;}
+
+.edit-php.post-type-post .manage-column.column-title{ width:20%;}
+.edit-php.post-type-post .manage-column.column-author{ width:6%;}
+.edit-php.post-type-post .manage-column.column-comments{ width:4%;}
+.edit-php.post-type-post .manage-column.column-date{ width:7%;}
+.edit-php.post-type-post .manage-column.column-modified-last{ width:7%;}
+.edit-php.post-type-post .manage-column.column-views{ width:5%;}
+.edit-php.post-type-post .manage-column.column-averageViews{ width:5%;}
+.edit-php.post-type-post .manage-column.column-titleNumber{ width:5%;}
+.edit-php.post-type-post .manage-column.column-contentNumber{ width:5%;}
+.edit-php.post-type-post .manage-column.column-titleKeyword{ width:5%;}
+.edit-php.post-type-post .manage-column.column-contentKeyword{ width:5%;}
+.edit-php.post-type-post .manage-column.column-contentInLink{ width:4%;}
+.edit-php.post-type-post .manage-column.column-contentOutLink{ width:4%;}
+.edit-php.post-type-post .manage-column.column-postid{ width:4%;}
+.edit-php.post-type-post .manage-column.column-thumbnail{ width:50px;}
+
+
+/*エディタ内テーブルのツールチップ位置*/
+.mce-tinymce.mce-tinymce-inline.mce-arrow.mce-container.mce-panel.mce-floatpanel.mce-arrow-up{ margin-top: 120px;}
+
+/*エディタ本文の行間*/
+.mce-content-body {
+	line-height: 1.85;
+}
+.wp-block-freeform.block-library-rich-text__tinymce li, .wp-block-freeform.block-library-rich-text__tinymce p {
+    line-height: 1.85;
+}
