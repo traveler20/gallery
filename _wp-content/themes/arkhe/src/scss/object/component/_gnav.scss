@@ -1,0 +1,162 @@
+
+// グローバルメニュー
+// #gnav は PCの #header の中。
+
+.c-gnavWrap {
+
+    height: 100%;
+
+    .l-header__body & {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+
+.c-gnav {
+    height: 100%;
+    font-size: .9rem;
+    text-align: center;
+    list-style: none;
+
+    a {
+        font-size: 1em; //em: .c-gnav のサイズを引き継ぐ
+        text-decoration: none;
+    }
+
+    // li
+    // .menu-item {
+    //     position: relative;
+    // }
+
+
+    // 深さ: 1
+    & > .menu-item {
+        position: relative;
+        height: 100%;
+
+        & > a {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            padding: 16px 12px;
+            color: inherit;
+            white-space: nowrap;
+            transition: color .25s;
+
+            .c-submenuToggleBtn {
+                display: none;
+            }
+
+        }
+
+        // メニューのホバーエフェクト
+        &.-current > a,
+        &:hover,
+        &.focus {
+            color: var(--ark-color_main);
+        }
+
+        // サブメニュー表示
+        &:hover,
+        &.focus {
+
+            & > .sub-menu {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+    }
+
+
+    // 子リスト
+    .sub-menu {
+        color: #fff;
+        text-align: left;
+        background: var(--ark-color_main);
+        border-top: 1px solid rgba(255, 255, 255, .1);
+        visibility: hidden;
+
+        a {
+            position: relative;
+            display: block;
+            padding: 1em .75em;
+            color: inherit;
+            font-size: .9em; //em: .c-gnav に対する相対的な値
+            outline-offset: -3px;
+            transition: opacity .25s, background-color .25s;
+
+
+            &::before {
+
+                @extend %absLayer;
+                background-color: transparent;
+                transition: background-color .25s;
+                content: "";
+            }
+
+            &:hover::before {
+                background-color: rgba(255, 255, 255, .1);
+            }
+        }
+
+        & > .menu-item:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+    }
+
+    // 優先度高めるために .sub-menu 関係より下で書いている。
+    // .menu-item-has-children:not(.-current):hover > a::after {
+    //     content: none;
+    // }
+
+
+    // 二層目のみ
+    & > .menu-item > .sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        z-index: 1;
+        width: 100%;
+        min-width: 240px;
+        transform: translateX(-50%);
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .5s, visibility .35s;
+
+        // ▲ の部分
+        &::before {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            z-index: 1;
+            // padding: 0;
+            border: 8px solid transparent;
+            border-bottom-color: var(--ark-color_main);
+            transform: translateX(-50%);
+            content: "";
+        }
+    }
+
+    .__mainText {
+        display: block;
+        color: inherit;
+        font-size: inherit;
+        line-height: 1;
+    }
+
+    .__subText {
+        position: relative;
+        top: 4px;
+        display: block;
+        color: inherit;
+        font-size: 10px;
+        line-height: 1;
+        opacity: .6;
+    }
+
+}

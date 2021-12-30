@@ -1,0 +1,7 @@
+.wp-block-cover {
+
+    @include pc {
+        padding: 2em;
+    }
+
+}

@@ -1,0 +1,43 @@
+.wp-block-latest-posts {
+
+    & > li::after {
+        display: block;
+        clear: both;
+        height: 0;
+        content: "";
+    }
+
+
+    // リスト型
+    &:not(.is-grid) {
+        border-top: solid 1px var(--ark-color_border);
+
+        li {
+            padding: 1em .25em;
+            border-bottom: solid 1px var(--ark-color_border);
+        }
+
+    }
+
+    // グリッド型
+    // &.is-grid{}
+
+
+    // タイトル
+    // a{}
+}
+
+// サムネイル
+.wp-block-latest-posts__featured-image {
+
+    // エディター側にはクラスついていない
+    & > img {
+        display: block;
+        width: 100%;
+    }
+
+    &.alignleft,
+    &.alignright {
+        max-width: 40%;
+    }
+}
