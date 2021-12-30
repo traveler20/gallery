@@ -1,0 +1,31 @@
+.#{$_prefix}l-header {
+  z-index: 1;
+  background-color: #00dae6;
+  overflow: hidden;
+
+  &, a {
+    color: $_color-white; // For IE11
+    color: _var-color-white();
+    text-decoration: none;
+  }
+
+  > .#{$_prefix}c-container {
+    position: relative;
+  }
+
+  .#{$_prefix}c-site-branding {
+    padding: ($_base-line-height / 2) 0;
+  }
+
+  .#{$_prefix}c-hamburger-btn {
+    position: absolute;
+    top: 50%;
+    right: $_base-line-height;
+    transform: translateY(-50%);
+
+    &__bar {
+      background-color: $_color-white; // For IE11
+      background-color: _var-color-white();
+    }
+  }
+}

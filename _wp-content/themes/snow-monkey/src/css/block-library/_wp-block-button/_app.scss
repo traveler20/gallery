@@ -1,0 +1,19 @@
+.wp-block-button {
+  margin: 0;
+
+  &__link {
+    color: #fff;
+  }
+
+  &__link,
+  &.is-style-outline &__link {
+    font-size: inherit;
+    line-height: 1;
+    @include _padding(.5, 1.25);
+    @include _transition(all);
+
+    @include _hover(lg) {
+      filter: brightness(90%);
+    }
+  }
+}

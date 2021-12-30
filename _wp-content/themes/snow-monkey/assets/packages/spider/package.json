@@ -1,0 +1,90 @@
+{
+  "_from": "@inc2734/spider@0.0.30",
+  "_id": "@inc2734/spider@0.0.30",
+  "_inBundle": false,
+  "_integrity": "sha512-NPhH3pmIF0VaZkd4YbyMQcaTpreEL0yYyp8FavLtwCZoe2160utXeCpU4IrYIXxc2JYF0WJ1uLDRPAfdLRqjAg==",
+  "_location": "/@inc2734/spider",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@inc2734/spider@0.0.30",
+    "name": "@inc2734/spider",
+    "escapedName": "@inc2734%2fspider",
+    "scope": "@inc2734",
+    "rawSpec": "0.0.30",
+    "saveSpec": null,
+    "fetchSpec": "0.0.30"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@inc2734/spider/-/spider-0.0.30.tgz",
+  "_shasum": "44501c4f8e50719eb328d9a50d312f4a5173c1bf",
+  "_spec": "@inc2734/spider@0.0.30",
+  "_where": "/Users/inc2734/Dropbox/LocalSites/snow-monkey/wp-content/themes/snow-monkey",
+  "author": {
+    "name": "inc2734"
+  },
+  "bugs": {
+    "url": "https://github.com/inc2734/smooth-scroll/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "## Get started",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@inc2734/add-custom-event": "^0.5.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@wordpress/browserslist-config": "^4.1.0",
+    "autoprefixer": "^10.4.0",
+    "browser-sync": "^2.27.7",
+    "browserslist": "^4.18.1",
+    "cssnano": "^5.0.12",
+    "node-sass": "^6.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.4",
+    "postcss-cli": "^9.0.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.60.1",
+    "rollup-plugin-uglify": "^6.0.4"
+  },
+  "files": [
+    "src",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "homepage": "https://github.com/inc2734/smooth-scroll#readme",
+  "license": "MIT",
+  "main": "src/js/spider.js",
+  "name": "@inc2734/spider",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inc2734/smooth-scroll.git"
+  },
+  "scripts": {
+    "build": "npm-run-all -p css js docs",
+    "clean:css": "rimraf dist/css && mkdir -p dist/css",
+    "clean:js": "rimraf dist/js && mkdir -p dist/js",
+    "clean:zip": "rimraf spider.zip",
+    "css": "npm run clean:js && node-sass src/css/spider.scss dist/css/spider.css && postcss -r dist/css/spider.css -c=postcss.config.js",
+    "docs": "npm-run-all -p docs:js docs:css",
+    "docs:clean:css": "rimraf docs/dist/css && mkdir -p docs/dist/css",
+    "docs:clean:js": "rimraf docs/dist/js && mkdir -p docs/dist/js",
+    "docs:css": "npm-run-all -p docs:css:*",
+    "docs:css:app": "node-sass docs/src/css/app.scss docs/dist/css/app.css && postcss -r docs/dist/css/app.css -c=postcss.config.js",
+    "docs:css:general": "node-sass docs/src/css/general.scss docs/dist/css/general.css && postcss -r docs/dist/css/general.css -c=postcss.config.js",
+    "docs:js": "npm run docs:clean:js && rollup -c docs/rollup.config.js",
+    "js": "npm run clean:js && rollup -c",
+    "server": "browser-sync start --server 'docs' --index 'index.html' --files 'docs'",
+    "start": "npm run build",
+    "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
+    "zip:archive": "zip -9 -qmr spider.zip spider",
+    "zip:pack": "rsync -a --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='package*.json' . spider && cd spider"
+  },
+  "version": "0.0.30"
+}

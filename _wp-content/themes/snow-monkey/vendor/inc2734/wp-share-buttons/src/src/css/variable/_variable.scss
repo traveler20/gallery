@@ -1,0 +1,17 @@
+/**
+ * Share button icons
+ *
+ * @var map $icons
+ *            name: (color, show count)
+ */
+$icons: (
+  twitter  : (#1da1f2, true),
+  facebook : (#0276FB, true),
+  hatena   : (#008be2, true),
+  feedly   : (#6cc655, true),
+  pocket   : (#ff002d, false),
+  pinterest: (#e60023, false),
+  line     : (#06c755, false),
+  feed     : (#ff9900, false),
+  copy     : (#333333, false)
+);

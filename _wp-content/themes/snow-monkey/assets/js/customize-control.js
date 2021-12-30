@@ -1,0 +1,1 @@
+!function(){var n=wp.customize;n.bind("ready",(function(){n("design-skin",(function(e){e.bind((function(e){n.panel.each((function(e){e.container.remove(),n.panel.remove(e.id)})),n.section.each((function(e){if("design-skin"===e.id)return!0;e.container.remove(),n.section.remove(e.id)}))}))}))}))}();

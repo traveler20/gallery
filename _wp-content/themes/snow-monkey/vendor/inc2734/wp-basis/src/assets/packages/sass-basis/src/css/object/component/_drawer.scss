@@ -1,0 +1,196 @@
+/*
+---
+name: .c-drawer
+category:
+  - object/component
+  - object/component/drawer
+---
+Drawer component
+
+### html
+```html
+<div style="min-height: 200px; position: relative; overflow: hidden">
+  <nav id="my-drawer" class="c-drawer" role="navigation" aria-hidden="true">
+    <div class="c-drawer__inner">
+      <div class="c-drawer__focus-point" tabindex="-1"></div>
+      <ul class="c-drawer__menu">
+        <li class="c-drawer__item"><a href="#">menu</a></li>
+        <li class="c-drawer__item"><a href="#">menu</a></li>
+        <li class="c-drawer__item c-drawer__item--has-submenu">
+          <a href="#">menu</a>
+          <button class="c-drawer__toggle" aria-expanded="false">
+            <span class="c-ic-angle-right" aria-hidden="true"></span>
+          </button>
+          <ul class="c-drawer__submenu" aria-hidden="true">
+            <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+            <li class="c-drawer__subitem c-drawer__subitem--has-submenu">
+              <a href="#">submenu</a>
+              <button class="c-drawer__toggle" aria-expanded="false">
+                <span class="c-ic-angle-right" aria-hidden="true"></span>
+              </button>
+              <ul class="c-drawer__submenu" aria-hidden="true">
+                <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="c-drawer__item c-drawer__item--has-submenu">
+          <a href="#">menu</a>
+          <button class="c-drawer__toggle" aria-expanded="false">
+            <span class="c-ic-angle-right" aria-hidden="true"></span>
+          </button>
+          <ul class="c-drawer__submenu" aria-hidden="true">
+            <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+            <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="c-drawer-close-zone" aria-controls="my-drawer" aria-hidden="true"></div>
+
+  <nav id="my-drawer-inverse" class="c-drawer c-drawer--inverse" role="navigation">
+    <div class="c-drawer__inner">
+      <div class="c-drawer__focus-point" tabindex="-1"></div>
+      <ul class="c-drawer__menu">
+        <li class="c-drawer__item"><a href="#">menu</a></li>
+        <li class="c-drawer__item"><a href="#">menu</a></li>
+        <li class="c-drawer__item c-drawer__item--has-submenu">
+          <a href="#">menu</a>
+          <button class="c-drawer__toggle" aria-expanded="false">
+            <span class="c-ic-angle-right" aria-hidden="true"></span>
+          </button>
+          <ul class="c-drawer__submenu" aria-hidden="true">
+            <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+            <li class="c-drawer__subitem c-drawer__subitem--has-submenu">
+              <a href="#">submenu</a>
+              <button class="c-drawer__toggle" aria-expanded="false">
+                <span class="c-ic-angle-right" aria-hidden="true"></span>
+              </button>
+              <ul class="c-drawer__submenu" aria-hidden="true">
+                <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="c-drawer__item c-drawer__item--has-submenu">
+          <a href="#">menu</a>
+          <button class="c-drawer__toggle" aria-expanded="false">
+            <span class="c-ic-angle-right" aria-hidden="true"></span>
+          </button>
+          <ul class="c-drawer__submenu" aria-hidden="true">
+            <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+            <li class="c-drawer__subitem"><a href="#">submenu</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="c-drawer-close-zone" aria-controls="my-drawer-inverse" aria-hidden="true"></div>
+</div>
+
+<button id="my-drawer-btn" class="c-hamburger-btn" aria-expanded="false" aria-controls="my-drawer">
+  <span class="c-hamburger-btn__bars">
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+  </span>
+  <span class="c-hamburger-btn__label">MENU</span>
+</button>
+
+<button id="my-drawer-btn-inverse" class="c-hamburger-btn" aria-expanded="false" aria-controls="my-drawer-inverse">
+  <span class="c-hamburger-btn__bars">
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+  </span>
+  <span class="c-hamburger-btn__label">MENU (Inverse)</span>
+</button>
+```
+*/
+
+.#{ $_prefix }c-drawer {
+  @include _drawer();
+  @include _transition(left, right, visibility);
+  transition-timing-function: ease-in;
+  backface-visibility: hidden;
+
+  &[aria-hidden="false"] {
+    @include _transition(left, right);
+    transition-timing-function: ease-out;
+  }
+
+  &__focus-point {
+    height: 0px !important;
+    width: 0px !important;
+    opacity: 0 !important;
+  }
+
+  &__menu,
+  &__submenu {
+    @include _list-unstyled();
+
+    > *:not(:first-child) {
+      @include _margin-top(.5, false);
+    }
+  }
+
+  &__item,
+  &__subitem {
+    position: relative;
+    overflow: hidden;
+
+    &--has-submenu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      > * {
+        flex: 1 1 auto;
+      }
+
+      > a {
+        @include _padding-right(.5);
+        max-width: calc(100% - 42px);
+      }
+
+      > .#{ $_prefix }c-drawer__toggle {
+        flex: 0 0 auto;
+        width: 42px;
+        overflow: hidden;
+      }
+
+      > .#{ $_prefix }c-drawer__submenu {
+        flex: 1 1 100%;
+      }
+    }
+  }
+
+  &__submenu {
+    @include _margin-top(.5, false);
+    @include _margin-left(.5, false);
+
+    &[aria-hidden="true"] {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .c-ic-angle-right {
+      transform: translateY(0);
+    }
+  }
+
+  &--fixed {
+    position: fixed;
+  }
+}
+
+[data-basis-drawer-toggle-btn] * {
+  pointer-events: none;
+}

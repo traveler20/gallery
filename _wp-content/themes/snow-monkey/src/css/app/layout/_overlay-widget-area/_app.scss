@@ -1,0 +1,21 @@
+.#{ $_prefix }l-overlay-widget-area {
+  @include items-gutter();
+
+  position: relative;
+  margin: auto;
+  background-color: $_color-white; // For IE11
+  background-color: _var-color-white();
+  color: $_color-text; // For IE11
+  color: _var-color-text();
+  max-width: _strip-unit(map-get($_sizes, lg)) * 1rem;
+  @include _padding(.5);
+  width: 90vw;
+
+  @include _media-min(md) {
+    @include _padding(1);
+  }
+
+  &[data-is-slim-widget-area="true"] {
+    max-width: _strip-unit(map-get($_sizes, md)) * 1rem;
+  }
+}

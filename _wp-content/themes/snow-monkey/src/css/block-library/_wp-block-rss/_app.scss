@@ -1,0 +1,37 @@
+.wp-block-rss {
+  @extend %widget-list-base;
+  margin-left: auto;
+
+  &__item-publish-date,
+  &__item-author {
+    @include _font-size-line-height($_base-font-size-px - 4);
+  }
+
+  &__item-excerpt {
+    @include _font-size-line-height($_base-font-size-px - 2);
+  }
+
+  &.is-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: _space(.25, true, true);
+
+    .wp-block-rss__item {
+      margin: 0;
+      width: auto;
+    }
+
+    @include _media-min(600px) {
+      gap: _space(1, true, true);
+
+      @for $i from 2 through 6 {
+        &.columns-#{ $i } {
+          grid-template-columns: repeat(#{ $i }, 1fr);
+
+          > .wp-block-rss__item {
+          }
+        }
+      }
+    }
+  }
+}

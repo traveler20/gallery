@@ -1,0 +1,31 @@
+{
+  "name": "inc2734/wp-basis",
+  "description": "This library customizes HTML to use sass-basis in WordPress.",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"squizlabs/php_codesniffer": "^3.5",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"wp-coding-standards/wpcs": "^2.3",
+		"sirbrillig/phpcs-variable-analysis": "^2.10",
+    "wp-phpunit/wp-phpunit": "^5.6"
+  },
+  "authors": [
+    {
+      "name": "Takashi Kitajima",
+      "email": "inc@2inc.org"
+    }
+  ],
+  "autoload": {
+    "psr-4" : {
+      "Inc2734\\WP_Basis\\" : "src"
+    }
+  },
+  "scripts": {
+    "format": "phpcbf --standard=./.phpcs.xml.dist --report-summary --report-source",
+    "lint": "phpcs --standard=./.phpcs.xml.dist"
+  }
+}

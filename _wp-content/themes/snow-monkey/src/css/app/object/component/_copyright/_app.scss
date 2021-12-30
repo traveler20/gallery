@@ -1,0 +1,13 @@
+.#{ $_prefix }c-copyright {
+  @include _font-size-line-height($_base-font-size-px - 2);
+  @include _padding(.5, 0);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    @include _hover(lg) {
+      text-decoration: underline;
+    }
+  }
+}

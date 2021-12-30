@@ -1,0 +1,71 @@
+// @deprecated
+.has-small-font-size {
+  @include _font-size-line-height(13px);
+}
+
+// @deprecated
+.has-medium-font-size {
+  @include _font-size-line-height(20px);
+}
+
+// @deprecated
+.has-large-font-size {
+  @include _font-size-line-height(36px);
+}
+
+// @deprecated
+.has-huge-font-size {
+  @include _font-size-line-height(48px);
+}
+
+$editor-font-sizes: (
+  'sm-small': 14px,
+  'sm-normal': 16px,
+  'sm-medium': 20px,
+  'sm-large': 28px,
+  'sm-xlarge': 36px,
+  'sm-xxlarge': 44px,
+  'sm-xxxlarge': 52px,
+);
+
+$editor-font-sizes-md: (
+  'sm-small': 14px,
+  'sm-normal': 16px,
+  'sm-medium': 20px,
+  'sm-large': 28px,
+  'sm-xlarge': 44px,
+  'sm-xxlarge': 76px,
+  'sm-xxxlarge': 96px,
+);
+
+$editor-font-sizes-lg: (
+  'sm-small': 14px,
+  'sm-normal': 16px,
+  'sm-medium': 20px,
+  'sm-large': 28px,
+  'sm-xlarge': 44px,
+  'sm-xxlarge': 76px,
+  'sm-xxxlarge': 140px,
+);
+
+// @see src/css/dependency/snow-monkey-blocks/section
+@each $slug, $size in $editor-font-sizes {
+  .has-#{ $slug }-font-size {
+    @include _font-size-line-height($size);
+
+    $size-md: map-get($editor-font-sizes-md, $slug);
+    $size-lg: map-get($editor-font-sizes-lg, $slug);
+
+    @if $size != $size-md {
+      @include _media-min(md) {
+        @include _font-size-line-height($size-md);
+      }
+    }
+
+    @if $size != $size-lg and $size-md != $size-lg {
+      @include _media-min(lg) {
+        @include _font-size-line-height($size-lg);
+      }
+    }
+  }
+}

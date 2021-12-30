@@ -1,0 +1,13 @@
+.widget_categories {
+  ul {
+    @extend %widget-list-base;
+  }
+
+  .cat-item {
+    @extend %widget-has-children-expander;
+  }
+
+  .children {
+    @extend %widget-children;
+  }
+}

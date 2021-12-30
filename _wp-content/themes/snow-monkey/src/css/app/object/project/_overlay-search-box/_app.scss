@@ -1,0 +1,29 @@
+.#{ $_prefix }p-overlay-search-box {
+  .#{ $_prefix }c-input-group {
+    width: 80vw;
+    max-width: 480px;
+
+    &__field {
+      > input {
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(#fff, .7);
+        color: $_color-white; // For IE11
+        color: _var-color-white();
+
+        &:focus {
+          border-bottom-color: $_color-white; // For IE11
+          border-bottom-color: _var-color-white();
+        }
+      }
+    }
+
+    &__btn {
+      background-color: transparent;
+      border: none;
+      color: $_color-white; // For IE11
+      color: _var-color-white();
+    }
+  }
+}

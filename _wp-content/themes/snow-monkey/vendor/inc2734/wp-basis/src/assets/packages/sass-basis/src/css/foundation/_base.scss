@@ -1,0 +1,207 @@
+:root {
+  --_background-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+
+  &:before, &:after {
+    box-sizing: inherit;
+  }
+}
+
+html, body,
+p, ol, ul, li, dl, dt, dd, table,
+blockquote, figure, fieldset, legend, pre, iframe, hr,
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: (_strip-unit($_base-font-size-px) / 16 * 100%);
+}
+
+body {
+  background-color: _var-background-color();
+  color: $_color-text; // for IE11
+  color: _var-color-text();
+  font-family: $_font-family;
+  @include _font-size-line-height($_base-font-size-px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, kbd, pre, samp {
+  @include _font-size-line-height($_base-font-size-px - 2);
+  font-family: '_', monospace;
+}
+
+input, textarea, keygen, select, button {
+  font-family: $_font-family;
+}
+
+input, textarea, optgroup, select, button {
+  @include _font-size-line-height($_base-font-size-px);
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+pre {
+  @include _pre();
+}
+
+code {
+  background-color: _lighter($_color-gray); // For IE11
+  background-color: _var-lighter-color-gray();
+  border-radius: $_border-radius; // for IE11
+  border-radius: _var-border-radius();
+  padding: 2px 6px;
+}
+
+label {
+  cursor: pointer;
+}
+
+/*
+---
+name: Headings
+category:
+  - foundation/typography
+  - foundation/typography/headings
+---
+Headings
+
+### html
+```html
+<h1>h1</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+```
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+h1 {
+  @include _font-size-line-height($_h1-font-size-scale);
+}
+
+h2 {
+  @include _font-size-line-height($_h2-font-size-scale);
+}
+
+h3 {
+  @include _font-size-line-height($_h3-font-size-scale);
+}
+
+h4 {
+  @include _font-size-line-height($_h4-font-size-scale);
+}
+
+h5 {
+  @include _font-size-line-height($_h5-font-size-scale);
+}
+
+h6 {
+  @include _font-size-line-height($_h6-font-size-scale);
+}
+
+/*
+---
+name: Lists
+category:
+  - foundation/typography
+  - foundation/typography/lists
+---
+Lists
+
+### html
+```html
+<h3>ul</h3>
+<ul>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>consectetur adipisicing elit</li>
+  <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+</ul>
+
+<h3>ol</h3>
+<ol>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>consectetur adipisicing elit</li>
+  <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+</ol>
+
+<h3>dl</h3>
+<dl>
+  <dt>Lorem ipsum dolor sit amet</dt>
+  <dd>consectetur adipisicing elit</dd>
+  <dt>Lorem ipsum dolor sit amet</dt>
+  <dd>consectetur adipisicing elit</dd>
+</dl>
+```
+*/
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 0;
+}
+
+/*
+---
+name: Blockquotes
+category:
+  - foundation/typography
+  - foundation/typography/blockquotes
+---
+Blockquotes
+
+### html
+```html
+<blockquote>
+  <h3>Blockquotes</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill
+  </p>
+  <ul>
+    <li>Lorem ipsum dolor sit amet</li>
+    <li>consectetur adipisicing elit</li>
+    <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+  </ul>
+</blockquote>
+```
+*/
+
+blockquote {
+  @include _content();
+
+  border-left: $_base-font-size-px / 2 solid transparent;
+  border-left-color: _lighter($_color-gray); // For IE11
+  border-left-color: _var-lighter-color-gray();
+  margin-left: 0;
+  padding: $_base-font-size-px 0 $_base-font-size-px $_base-font-size-px;
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  footer {
+    color: _darker($_color-gray); // For IE11
+    color: _var-darker-color-gray();
+    font-size: 90%;
+  }
+}

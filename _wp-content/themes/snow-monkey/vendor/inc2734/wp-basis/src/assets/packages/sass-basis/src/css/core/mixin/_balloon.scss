@@ -1,0 +1,66 @@
+/*
+---
+name: _balloon()
+category:
+  - core/mixin
+---
+Generate balloon
+
+### scss
+```scss
+//
+// @param  string  $angle   position of arrow
+// @param  hash    $params  properties for decoration
+//
+
+.c-foo {
+  @include _balloon(top, (
+    background-color: #fff,
+    border-color: #ccc,
+    border-size: 1px,
+    triangle-size: 10px,
+  ));
+}
+```
+*/
+
+@mixin _balloon($angle, $params: ()) {
+  $params: map-merge(
+    (
+      background-color: null,
+      border-color: null,
+      border-size: null,
+      triangle-size: 10px,
+    ),
+    $params
+  );
+
+  position: relative;
+
+  $background-colors: map-get($params, 'background-color');
+  @if (not _is-null($background-colors)) {
+    @each $background-color in $background-colors {
+      background-color: $background-color;
+    }
+  }
+
+  $border-size: map-get($params, 'border-size');
+  $border-colors: map-get($params, 'border-color');
+  @if (not _is-null($border-size) and not _is-null($border-colors)) {
+    border: $border-size solid transparent;
+
+    @each $border-color in $border-colors {
+      border-color: $border-color;
+    }
+  }
+
+  $triangle-size: map-get($params, 'triangle-size');
+
+  @include _balloon-triangle(
+    $angle,
+    $triangle-size,
+    $background-colors,
+    $border-size,
+    $border-colors
+  );
+}

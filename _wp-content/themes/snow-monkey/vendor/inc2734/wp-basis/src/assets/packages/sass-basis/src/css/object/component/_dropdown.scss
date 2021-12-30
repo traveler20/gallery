@@ -1,0 +1,127 @@
+/*
+---
+name: .c-dropdown
+category:
+  - object/component
+  - object/component/dropdown
+---
+Dropdown component
+
+### html
+```html
+<div style="min-height: 200px; position: relative">
+  <nav id="my-dropdown" class="c-dropdown" role="navigation" aria-hidden="true" aria-labelledby="my-dropdown-btn">
+    <div class="c-dropdown__inner">
+      <ul class="c-dropdown__menu">
+        <li class="c-dropdown__item">
+          <div class="c-hamburger-btn" role="button" aria-expanded="false" aria-controls="my-dropdown">
+            <div class="c-hamburger-btn__bars">
+              <div class="c-hamburger-btn__bar"></div>
+              <div class="c-hamburger-btn__bar"></div>
+              <div class="c-hamburger-btn__bar"></div>
+            </div>
+            <div class="c-hamburger-btn__label">MENU</div>
+          </div>
+        </li>
+        <li class="c-dropdown__item"><a href="#">menu</a></li>
+        <li class="c-dropdown__item"><a href="#">menu</a></li>
+        <li class="c-dropdown__item c-dropdown__item--has-submenu">
+          <a href="#">menu</a>
+          <button class="c-dropdown__toggle" aria-expanded="false">
+            <span class="c-ic-angle-right" aria-hidden="true"></span>
+          </button>
+          <ul class="c-dropdown__submenu" aria-hidden="true">
+            <li class="c-dropdown__subitem"><a href="#">submenu</a></li>
+            <li class="c-dropdown__subitem"><a href="#">submenu</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<button id="my-dropdown-btn" class="c-hamburger-btn" aria-expanded="false" aria-controls="my-dropdown">
+  <span class="c-hamburger-btn__bars">
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+  </span>
+  <span class="c-hamburger-btn__label">MENU</span>
+</button>
+```
+*/
+
+.#{ $_prefix }c-dropdown {
+  @include _dropdown();
+  @include _transition(bottom, visibility);
+  transition-timing-function: ease-in;
+
+  &[aria-hidden="false"] {
+  @include _transition(bottom);
+    transition-timing-function: ease-out;
+  }
+
+  &__menu,
+  &__submenu {
+    @include _list-unstyled();
+
+    > *:not(:first-child) {
+      @include _margin-top(.5, false);
+    }
+  }
+
+  &__item,
+  &__subitem {
+    position: relative;
+    overflow: hidden;
+
+    &--has-submenu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      > * {
+        flex: 1 1 auto;
+      }
+
+      > a {
+        @include _padding-right(.5);
+        max-width: calc(100% - 42px);
+      }
+
+      > .#{ $_prefix }c-dropdown__toggle {
+        flex: 0 0 auto;
+        width: 42px;
+        overflow: hidden;
+      }
+
+      > .#{ $_prefix }c-dropdown__submenu {
+        flex: 1 1 100%;
+      }
+    }
+  }
+
+  &__submenu {
+    @include _margin-top(.5, false);
+    @include _margin-left(.5, false);
+
+    &[aria-hidden="true"] {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .c-ic-angle-right {
+      transform: translateY(0);
+    }
+  }
+
+  &--fixed {
+    position: fixed;
+  }
+}

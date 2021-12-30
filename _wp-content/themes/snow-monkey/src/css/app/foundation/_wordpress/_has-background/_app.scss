@@ -1,0 +1,9 @@
+p,
+ul,
+ol,
+.wp-block-group,
+.wp-block-column {
+  &.has-background {
+    @include _padding(1);
+  }
+}
