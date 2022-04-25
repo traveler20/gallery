@@ -1,7 +1,0 @@
-.wp-block-table {
-  @extend %table;
-
-  > table {
-    @extend %table;
-  }
-}

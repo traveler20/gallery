@@ -1,7 +1,0 @@
-.smb-section-side-heading {
-  &__body {
-    @include _media-max(sm) {
-      @include section-body();
-    }
-  }
-}

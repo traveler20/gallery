@@ -1,7 +1,0 @@
-<?php
-////////////////////////////////////////////////////////
-//現在のページURLを取得する
-////////////////////////////////////////////////////////
-function get_the_fit_permalink(){
-	return (is_ssl() ? 'https' : 'http') . '://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-}

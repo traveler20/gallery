@@ -1,5 +1,0 @@
-[data-has-sidebar="true"] .#{ $_prefix }l-front-page-widget-area {
-  @include _media-min(lg) {
-    @include items-gutter();
-  }
-}
